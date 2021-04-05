@@ -1,5 +1,7 @@
-const body_height = document.body.clientHeight
-const body_width = document.body.clientWidth
+//! Row and Column flow are working, is only about reading comments and using the desired one
+//TODO: function to pick Row or Column flow without having to comment / uncomment code
+//TODO: disable aspect ratio to fit into parent container
+
 const container = document.querySelector(".slide-container");
 const slider = document.querySelector(".slider");
 const images = document.querySelectorAll(".slider img");
@@ -9,18 +11,9 @@ const nextBtn = document.getElementById("nextBtn");
 
 let counter = 1;
 
-/* 
-// ? lo hice pa jugar
-let sign = -1
-nextBtn.style.transform = 'translateY(500px)'
-sign = (-1) * sign
-slider.style.transform = 'translateX(' + (-SIZE_WIDTH * counter ) + 'px) rotate(' + sign * 2 * counter + 'deg)'
-*/
-
-// const SIZE_WIDTH = images[0].getBoundingClientRect().width
-// let SIZE_WIDTH = images[0].getBoundingClientRect().width
 let SIZE_WIDTH = 0
 let SIZE_HEIGHT = 0
+
 document.addEventListener('DOMContentLoaded',()=>{
 	calculateImgWidth()
 	// calculateImgHeight()
@@ -64,8 +57,8 @@ nextBtn.addEventListener("click", () => {
 
 prevBtn.addEventListener("click", () => {
     slider.style.transition = "transform 0.4s ease-in-out";
-    counter--;
-    slider.style.transform = "translateX(" + -SIZE_WIDTH * counter + "px)";
+	counter--
+	slider.style.transform = "translateX(" + -(+SIZE_WIDTH) * counter + "px)";
 });
 
 // slider.addEventListener("transitionend", () => {
